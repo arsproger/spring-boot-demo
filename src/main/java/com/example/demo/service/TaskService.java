@@ -5,6 +5,9 @@ import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Timestamp;
+
 import java.util.List;
 
 @Service
@@ -30,6 +33,17 @@ public class TaskService {
 
     public Task updateById(Task task) {
         return taskRepo.save(task);
+    }
+
+//    public Long saveTask(String title, String description) {
+//        Task task = new Task(title,description);
+//        task.setIssuedDate(new LocalDateTime().now());
+//        return taskRepo.save(task).getId();
+//    }
+
+    public Long saveTaskT(String title , String description, Timestamp issuedDate) {
+        Task task = new Task(title,description,issuedDate);
+        return taskRepo.save(task).getId();
     }
 
 }

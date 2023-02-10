@@ -5,7 +5,11 @@ import com.example.demo.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
+
+
 
 @RestController
 @AllArgsConstructor
@@ -23,10 +27,10 @@ public class TaskController {
         return service.getAllPersons();
     }
 
-    @PostMapping("/task/save")
-    Long saveNewPerson(@RequestBody Task task) {
-        return service.saveTask(task);
-    }
+//    @PostMapping("/task/save")
+//    Long saveNewPerson(@RequestBody Task task) {
+//        return service.saveTask(task);
+//    }
     
     @DeleteMapping("/task/delete/{id}")
     void deletePersonById(@PathVariable Long id) {
@@ -36,5 +40,20 @@ public class TaskController {
     @PutMapping("/task/update")
     Task updateSurnameById(@RequestBody Task task) {
         return service.updateById(task);
+    }
+
+
+//    @PostMapping("/task/save")
+//    Long getTaskSave(@RequestParam String title,
+//                     @RequestParam String description) {
+//        return service.saveTask(title,description);
+//    }
+
+
+    @PostMapping("/task/save")
+    Long saveNewTask(@RequestParam String title,
+                     @RequestParam String description,
+                     @RequestParam Timestamp issuedDate) {
+        return service.saveTaskT(title,description,issuedDate);
     }
 }

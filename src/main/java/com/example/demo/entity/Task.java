@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -31,4 +32,10 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     TaskStatus status;
+
+    public Task(String title, String description, Timestamp issuedDate) {
+        this.title = title;
+        this.description = description;
+        this.issuedDate = issuedDate;
+    }
 }
