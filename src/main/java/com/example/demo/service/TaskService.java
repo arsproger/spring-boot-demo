@@ -31,5 +31,8 @@ public class TaskService {
     public Task updateById(Task task) {
         return taskRepo.save(task);
     }
+    public List<Task> getAllByUserId (Long id) {
+    return taskRepo.findAllByUserId(id);
+    }
 
 }

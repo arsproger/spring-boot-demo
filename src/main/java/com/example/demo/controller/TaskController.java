@@ -23,6 +23,11 @@ public class TaskController {
         return service.getAllPersons();
     }
 
+    @GetMapping("/task/user/{userId}")
+    List<Task> getAllPersons(@PathVariable Long userId) {
+        return service.getAllByUserId(userId);
+    }
+
     @PostMapping("/task/save")
     Long saveNewPerson(@RequestBody Task task) {
         return service.saveTask(task);
