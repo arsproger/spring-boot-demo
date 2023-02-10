@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Task;
+import com.example.demo.enums.TaskStatus;
 import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,4 +33,16 @@ public class TaskService {
         return taskRepo.save(task);
     }
 
+    public Task updateStatusOfTask(Long idTask, Long idUser){
+        Task task = taskRepo.findByIdAndUserId(idTask,idUser);
+        if(task.getStatus() == TaskStatus.DONE){
+            System.out.println("Fail");
+        }else if(task.getStatus() == TaskStatus.NEW){
+            task.setStatus(TaskStatus.IN_WORK);
+        }else if(task.getStatus() == TaskStatus.IN_WORK){
+            task.setStatus(TaskStatus.DONE);
+        }
+        taskRepo.save(task);
+        return task;
+    }
 }

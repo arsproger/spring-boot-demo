@@ -37,4 +37,10 @@ public class TaskController {
     Task updateSurnameById(@RequestBody Task task) {
         return service.updateById(task);
     }
+
+    @PostMapping("task/update/status")
+    Task updateStatusOfTask(@RequestParam Long idTask, @RequestParam Long idUser){
+        return service.updateStatusOfTask(idTask,idUser);
+    }
 }
+
