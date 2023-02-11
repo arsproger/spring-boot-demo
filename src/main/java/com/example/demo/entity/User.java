@@ -9,13 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Table(name = "users")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
 public class User {
-    //asdfasdfsf
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
     @SequenceGenerator(name = "users_sequence", sequenceName = "users_seq", allocationSize = 1)
