@@ -16,7 +16,7 @@ public class TaskService {
         return taskRepo.findById(id).get();
     }
 
-    public List<Task> getAllPersons() {
+    public List<Task> getAllTasks() {
         return taskRepo.findAll();
     }
 
