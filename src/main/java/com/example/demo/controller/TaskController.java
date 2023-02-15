@@ -39,8 +39,8 @@ public class TaskController {
     }
 
     @PostMapping("task/update/status")
-    Task updateStatusOfTask(@RequestParam Long idTask, @RequestParam Long idUser){
-        return service.updateStatusOfTask(idTask,idUser);
+    Task updateStatusOfTask(@RequestParam Long taskId, @RequestParam Long userId){
+        return service.updateStatusOfTask(taskId,userId);
     }
 }
 

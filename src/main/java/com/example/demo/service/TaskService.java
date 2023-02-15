@@ -33,8 +33,8 @@ public class TaskService {
         return taskRepo.save(task);
     }
 
-    public Task updateStatusOfTask(Long idTask, Long idUser){
-        Task task = taskRepo.findByIdAndUserId(idTask,idUser);
+    public Task updateStatusOfTask(Long taskId, Long userId){
+        Task task = taskRepo.findByIdAndUserId(taskId,userId);
         if(task.getStatus() == TaskStatus.DONE){
             System.out.println("Fail");
         }else if(task.getStatus() == TaskStatus.NEW){
