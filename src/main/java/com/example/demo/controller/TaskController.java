@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Task;
+import com.example.demo.model.TaskSaveModel;
 import com.example.demo.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -44,4 +45,12 @@ public class TaskController {
                      @RequestParam Timestamp issuedDate) {
         return service.saveTaskT(title,description,issuedDate);
     }
+    @GetMapping("/task/{id}/user/{userId}")
+    TaskSaveModel getByTaskIdAndUserId(@PathVariable Long id,
+                                       @PathVariable Long userId) {
+        return service.getByTaskIdAndUserId(id, userId);
+
+    }
+
+
 }

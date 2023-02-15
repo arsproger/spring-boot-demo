@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Task;
+import com.example.demo.entity.User;
+import com.example.demo.model.TaskSaveModel;
+import com.example.demo.model.UserSaveModel;
 import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +21,7 @@ public class TaskService {
     public Task getById(Long id) {
         return taskRepo.findById(id).get();
     }
-
+    
     public List<Task> getAllPersons() {
         return taskRepo.findAll();
     }
@@ -35,16 +38,18 @@ public class TaskService {
         return taskRepo.save(task);
     }
 
-//    public Long saveTask(String title, String description) {
-//        Task task = new Task(title,description);
-//        task.setIssuedDate(new LocalDateTime().now());
-//        return taskRepo.save(task).getId();
-//    }
-
     public Long saveTaskT(String title , String description, Timestamp issuedDate) {
         Task task = new Task(title,description,issuedDate);
         return taskRepo.save(task).getId();
     }
-
+    public TaskSaveModel getByTaskIdAndUserId(Long id, Long userId){
+        Task task  = taskRepo.findByIdAndUserId(id, userId);
+        TaskSaveModel taskSaveModel = new TaskSaveModel();
+        taskSaveModel.setTitle(task.getTitle());
+        taskSaveModel.setDescription(task.getDescription());
+        taskSaveModel.setIssuedDate(task.getIssuedDate());
+        taskSaveModel.setStatus(task.getStatus());
+        return taskSaveModel;
+    }
 
 }

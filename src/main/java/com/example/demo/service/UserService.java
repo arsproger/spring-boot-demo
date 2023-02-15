@@ -22,9 +22,7 @@ public class UserService {
     }
 
     public Long saveNewPerson(UserSaveModel model) {
-
         User user = new User();
-
         user.setName(model.getName());
         user.setEmail(model.getEmail());
         user.setPassword(model.getPassword());
