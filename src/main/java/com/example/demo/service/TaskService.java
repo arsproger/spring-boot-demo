@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Task;
 import com.example.demo.enums.TaskStatus;
+import com.example.demo.exceptions.TaskExceptions;
+import com.example.demo.model.TaskUpdateModel;
 import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,16 +35,24 @@ public class TaskService {
         return taskRepo.save(task);
     }
 
-    public Task updateStatusOfTask(Long taskId, Long userId){
+    public TaskUpdateModel updateStatusOfTask(Long taskId, Long userId) throws TaskExceptions {
         Task task = taskRepo.findByIdAndUserId(taskId,userId);
-        if(task.getStatus() == TaskStatus.DONE){
-            System.out.println("Fail");
-        }else if(task.getStatus() == TaskStatus.NEW){
-            task.setStatus(TaskStatus.IN_WORK);
-        }else if(task.getStatus() == TaskStatus.IN_WORK){
-            task.setStatus(TaskStatus.DONE);
-        }
+        TaskUpdateModel model = new TaskUpdateModel();
+
+        if(task == null){
+            throw new NullPointerException("This user does not have mentioned task");
+        } else if(task.getStatus() == TaskStatus.DONE)  throw new TaskExceptions("The status of your task is DONE");
+
+        TaskStatus status = task.getStatus() == TaskStatus.NEW
+                ? TaskStatus.IN_WORK
+                : TaskStatus.DONE;
+
+        task.setStatus(status);
         taskRepo.save(task);
-        return task;
+        model.setTitle(task.getTitle());
+        model.setStatus(task.getStatus());
+        model.setIssuedDate(task.getIssuedDate());
+        model.setDescription(task.getDescription());
+        return model;
     }
 }

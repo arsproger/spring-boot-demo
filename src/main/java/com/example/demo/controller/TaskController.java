@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Task;
+import com.example.demo.exceptions.TaskExceptions;
+import com.example.demo.model.TaskUpdateModel;
 import com.example.demo.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +40,11 @@ public class TaskController {
         return service.updateById(task);
     }
 
-    @PostMapping("task/update/status")
-    Task updateStatusOfTask(@RequestParam Long taskId, @RequestParam Long userId){
-        return service.updateStatusOfTask(taskId,userId);
+    @PostMapping("/task/update/status")
+    TaskUpdateModel updateStatusOfTask(@RequestParam Long taskId, @RequestParam Long userId) throws Exception {
+        TaskUpdateModel model = new TaskUpdateModel();
+        model  = service.updateStatusOfTask(taskId, userId);
+        return model;
     }
 }
 
