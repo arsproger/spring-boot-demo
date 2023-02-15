@@ -27,10 +27,6 @@ public class TaskController {
         return service.getAllPersons();
     }
 
-//    @PostMapping("/task/save")
-//    Long saveNewPerson(@RequestBody Task task) {
-//        return service.saveTask(task);
-//    }
     
     @DeleteMapping("/task/delete/{id}")
     void deletePersonById(@PathVariable Long id) {
@@ -41,14 +37,6 @@ public class TaskController {
     Task updateSurnameById(@RequestBody Task task) {
         return service.updateById(task);
     }
-
-
-//    @PostMapping("/task/save")
-//    Long getTaskSave(@RequestParam String title,
-//                     @RequestParam String description) {
-//        return service.saveTask(title,description);
-//    }
-
 
     @PostMapping("/task/save")
     Long saveNewTask(@RequestParam String title,
