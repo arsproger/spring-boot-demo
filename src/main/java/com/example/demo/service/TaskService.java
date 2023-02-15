@@ -16,7 +16,7 @@ public class TaskService {
         return taskRepo.findById(id).get();
     }
 
-    public List<Task> getAllPersons() {
+    public List<Task> getAllTasks() {
         return taskRepo.findAll();
     }
 
@@ -30,6 +30,9 @@ public class TaskService {
 
     public Task updateById(Task task) {
         return taskRepo.save(task);
+    }
+    public List<Task> getAllByUserId (Long id) {
+    return taskRepo.findAllByUserId(id);
     }
 
 }
