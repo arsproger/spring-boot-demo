@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.TaskDao;
 import com.example.demo.entity.Task;
+import com.example.demo.model.TaskPaginationModel;
 import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TaskService {
     TaskRepository taskRepo;
+    TaskDao taskDao;
 
     public Task getById(Long id) {
         return taskRepo.findById(id).get();
@@ -27,9 +30,11 @@ public class TaskService {
     public void deletePersonById(Long id) {
         taskRepo.deleteById(id);
     }
-
     public Task updateById(Task task) {
         return taskRepo.save(task);
     }
 
+    public List<TaskPaginationModel> getTaskByUserIdAndByNumberPage (Long userId, Integer countTask, Integer numberPage) {
+        return taskDao.getTaskByUserIdAndByNumberPage(userId, countTask, numberPage);
+    }
 }
