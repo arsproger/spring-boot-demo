@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.model.UserSaveModel;
 import com.example.demo.repository.UserRepository;
@@ -28,6 +29,7 @@ public class UserService {
         user.setName(model.getName());
         user.setEmail(model.getEmail());
         user.setPassword(model.getPassword());
+        user.setRole(String.valueOf(Role.ROLE_USER));
         return userRepo.save(user).getId();
     }
 
