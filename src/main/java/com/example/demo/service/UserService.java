@@ -39,30 +39,4 @@ public class UserService {
         return userRepo.save(user);
     }
 
-
-    //Из entity в dto
-    public UserSaveModel mapToUserSaveModel (User user) {
-        UserSaveModel userSaveModel = new UserSaveModel();
-        userSaveModel.setName(user.getName());
-        userSaveModel.setEmail(userSaveModel.getEmail());
-        userSaveModel.setPassword(userSaveModel.getPassword());
-        return userSaveModel;
-    }
-
-
-
-    //Из dto в entity
-    public User mapToUser (UserSaveModel userSaveModel) {
-        User user = new User();
-        user.setName(userSaveModel.getName());
-        user.setEmail(userSaveModel.getEmail());
-        user.setPassword(userSaveModel.getPassword());
-        return user;
-    }
-
-
-    public UserSaveModel updateUserById(User user) {
-        return mapToUserSaveModel(userRepo.save(user));
-    }
-
 }

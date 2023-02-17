@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Task;
-import com.example.demo.model.TaskDto;
 import com.example.demo.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,8 @@ public class TaskController {
     }
 
     @GetMapping("/task/user/{userId}")
-    List<TaskDto> getAllByUserId(@PathVariable Long userId) {
+    List<Task> getAllByUserId(@PathVariable Long userId) {
+
         return service.getAllByUserId(userId);
     }
 
@@ -42,9 +42,5 @@ public class TaskController {
     @PutMapping("/task/update")
     Task updateSurnameById(@RequestBody Task task) {
         return service.updateById(task);
-    }
-    @PutMapping ("/task/updateTask")
-    TaskDto updateTask (@RequestBody Task task) {
-        return service.updateTaskById(task);
     }
 }

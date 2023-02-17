@@ -9,8 +9,8 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 public class TaskDto {
-    private String title;
+    private Long id;
     private String description;
-    private Timestamp issuedDate;
-    TaskStatus status;
+    private TaskStatus taskStatus;
+    private Timestamp issued_date;
 }

@@ -38,8 +38,4 @@ public class UserController {
     User updateSurnameById(@RequestBody User user) {
         return service.updateById(user);
     }
-    @PutMapping("/user/updateUser")
-    UserSaveModel updateUser (@RequestBody User user) {
-        return service.updateUserById(user);
-    }
 }
