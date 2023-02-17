@@ -14,7 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
-    //asdfasdfsf
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
