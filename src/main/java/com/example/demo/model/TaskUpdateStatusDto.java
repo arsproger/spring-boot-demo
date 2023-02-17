@@ -8,10 +8,9 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class TaskDto {
+public class TaskUpdateStatusDto {
     private String title;
     private String description;
     private Timestamp issuedDate;
     private TaskStatus status;
-    private String userName;
 }

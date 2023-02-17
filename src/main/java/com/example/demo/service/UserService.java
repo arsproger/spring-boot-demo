@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.User;
-import com.example.demo.model.UserSaveModel;
+import com.example.demo.model.UserSaveDto;
 import com.example.demo.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public Long saveNewPerson(UserSaveModel model) {
+    public Long saveNewPerson(UserSaveDto model) {
 
         User user = new User();
 
@@ -41,27 +41,27 @@ public class UserService {
 
 
     //Из entity в dto
-    public UserSaveModel mapToUserSaveModel (User user) {
-        UserSaveModel userSaveModel = new UserSaveModel();
-        userSaveModel.setName(user.getName());
-        userSaveModel.setEmail(userSaveModel.getEmail());
-        userSaveModel.setPassword(userSaveModel.getPassword());
-        return userSaveModel;
+    public UserSaveDto mapToUserSaveModel (User user) {
+        UserSaveDto userSaveDto = new UserSaveDto();
+        userSaveDto.setName(user.getName());
+        userSaveDto.setEmail(userSaveDto.getEmail());
+        userSaveDto.setPassword(userSaveDto.getPassword());
+        return userSaveDto;
     }
 
 
 
     //Из dto в entity
-    public User mapToUser (UserSaveModel userSaveModel) {
+    public User mapToUser (UserSaveDto userSaveDto) {
         User user = new User();
-        user.setName(userSaveModel.getName());
-        user.setEmail(userSaveModel.getEmail());
-        user.setPassword(userSaveModel.getPassword());
+        user.setName(userSaveDto.getName());
+        user.setEmail(userSaveDto.getEmail());
+        user.setPassword(userSaveDto.getPassword());
         return user;
     }
 
 
-    public UserSaveModel updateUserById(User user) {
+    public UserSaveDto updateUserById(User user) {
         return mapToUserSaveModel(userRepo.save(user));
     }
 
