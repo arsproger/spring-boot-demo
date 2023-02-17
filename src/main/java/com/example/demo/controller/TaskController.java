@@ -42,6 +42,6 @@ public class TaskController {
 
     @GetMapping("task/page/count")
     List<TaskPaginationModel> getListTasks() {
-        return service.getTaskByUserIdAndByNumberPage(1L, 3, 3);
+        return service.getTaskByUserIdAndByNumberPage(1L, 10, 1);
     }
 }
