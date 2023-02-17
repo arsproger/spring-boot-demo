@@ -15,7 +15,7 @@ public class TaskController {
    TaskService service;
 
     @GetMapping("/task/{id}")
-    Task getById(@PathVariable Long id) {
+    TaskDto getById(@PathVariable Long id) {
        return service.getById(id);
     }
     
@@ -39,10 +39,6 @@ public class TaskController {
         service.deletePersonById(id);
     }
 
-    @PutMapping("/task/update")
-    Task updateSurnameById(@RequestBody Task task) {
-        return service.updateById(task);
-    }
     @PutMapping ("/task/updateTask")
     TaskDto updateTask (@RequestBody Task task) {
         return service.updateTaskById(task);

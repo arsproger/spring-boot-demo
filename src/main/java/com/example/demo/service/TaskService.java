@@ -14,8 +14,8 @@ import java.util.List;
 public class TaskService {
     TaskRepository taskRepo;
 
-    public Task getById(Long id) {
-        return taskRepo.findById(id).get();
+    public TaskDto getById(Long id) {
+        return mapToTaskSaveModel(taskRepo.findById(id).get().getId());
     }
 
     public List<Task> getAllTasks() {
@@ -39,17 +39,12 @@ public class TaskService {
         return taskDto;
     }
 
-
-    public Task updateById(Task task) {
-        return taskRepo.save(task);
-    }
     public List<TaskDto> getAllByUserId (Long userId) {
 
         List<Task> tasks = taskRepo.findAllByUserId(userId);
         List<TaskDto> taskDtos = new ArrayList<>();
 
         for (Task task: tasks) {
-
             TaskDto taskDto = new TaskDto();
             taskDto.setTitle(task.getTitle());
             taskDto.setDescription(task.getDescription());
