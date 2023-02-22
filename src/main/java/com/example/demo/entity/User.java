@@ -14,6 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
     @SequenceGenerator(name = "users_sequence", sequenceName = "users_seq", allocationSize = 1)

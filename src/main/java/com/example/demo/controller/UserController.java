@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
-import com.example.demo.model.UserSaveModel;
+import com.example.demo.model.UserSaveDto;
 import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/user/save")
-    Long saveNewPerson(@RequestBody UserSaveModel user) {
+    Long saveNewPerson(@RequestBody UserSaveDto user) {
         return service.saveNewPerson(user);
     }
 
@@ -37,5 +37,9 @@ public class UserController {
     @PutMapping("/user/update")
     User updateSurnameById(@RequestBody User user) {
         return service.updateById(user);
+    }
+    @PutMapping("/user/updateUser")
+    UserSaveDto updateUser (@RequestBody User user) {
+        return service.updateUserById(user);
     }
 }
