@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Data
 @Entity
+@Table(name = "task")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "task")
+@Data
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_sequence")
@@ -30,5 +30,5 @@ public class Task {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    TaskStatus status;
+    private TaskStatus status;
 }

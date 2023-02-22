@@ -9,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Table(name = "users")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
 public class User {
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
     @SequenceGenerator(name = "users_sequence", sequenceName = "users_seq", allocationSize = 1)
@@ -29,7 +32,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String role;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks=new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
 }
