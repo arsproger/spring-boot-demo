@@ -12,30 +12,31 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/task")
 public class TaskController {
 
    TaskService service;
 
     @Deprecated
-    @GetMapping("/task/{id}")
+    @GetMapping("/{id}")
     Task getById(@PathVariable Long id) {
        return service.getById(id);
     }
 
     @Deprecated
-    @GetMapping("/task/all")
+    @GetMapping("/all")
     List<Task> getAllTasks() {
         return service.getAllTasks();
     }
 
-    @GetMapping("/task/{taskId}/{userId}")
+    @GetMapping("/{taskId}/{userId}")
     TaskDto getTaskByIdAndUserId(@PathVariable Long taskId,
                            @PathVariable Long userId)  {
         return service.getByIdAndUserId(taskId, userId);
     }
 
 
-    @PostMapping("/task/update/status")
+    @PostMapping("/update/status")
     TaskUpdateStatusDto updateStatusTask(@RequestParam Long taskId, @RequestParam Long userId) throws Exception {
         return service.updateStatusTask(taskId, userId);
     }
@@ -46,23 +47,23 @@ public class TaskController {
         return service.getAllByUserId(userId);
     }
 
-    @PostMapping("/task/save")
+    @PostMapping("/save")
     Long saveTask(@RequestBody TaskSaveDto dto) {
         return service.saveTask(dto);
     }
 
 
-    @DeleteMapping("/task/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     void deletePersonById(@PathVariable Long id) {
         service.deletePersonById(id);
     }
 
-    @PutMapping("/task/update")
+    @PutMapping("/update")
     Task updateSurnameById(@RequestBody Task task) {
         return service.updateById(task);
     }
 
-    @PutMapping ("/task/updateTask")
+    @PutMapping ("/updateTask")
     TaskDto updateTask (@RequestBody Task task) {
         return service.updateTaskById(task);
     }
