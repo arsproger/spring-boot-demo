@@ -16,11 +16,13 @@ public class TaskController {
 
    TaskService service;
 
+    @Deprecated
     @GetMapping("/task/{id}")
     Task getById(@PathVariable Long id) {
        return service.getById(id);
     }
-    
+
+    @Deprecated
     @GetMapping("/task/all")
     List<Task> getAllTasks() {
         return service.getAllTasks();
@@ -45,9 +47,10 @@ public class TaskController {
     }
 
     @PostMapping("/task/save")
-        Long saveTask(@RequestBody TaskSaveDto dto) {
+    Long saveTask(@RequestBody TaskSaveDto dto) {
         return service.saveTask(dto);
     }
+
 
     @DeleteMapping("/task/delete/{id}")
     void deletePersonById(@PathVariable Long id) {
