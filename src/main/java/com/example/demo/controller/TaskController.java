@@ -48,8 +48,6 @@ public class TaskController {
     }
 
     @PostMapping("/save")
-
-    @PostMapping("/task/save")
     Long saveTask(@RequestBody TaskSaveDto dto) {
         return service.saveTask(dto);
     }
