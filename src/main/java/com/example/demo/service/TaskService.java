@@ -103,7 +103,6 @@ public class TaskService {
         List<TaskDto> taskDtos = new ArrayList<>();
 
         for (Task task : tasks) {
-
             TaskDto taskDto = new TaskDto();
             taskDto.setTitle(task.getTitle());
             taskDto.setDescription(task.getDescription());

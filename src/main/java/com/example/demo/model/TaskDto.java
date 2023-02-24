@@ -13,5 +13,6 @@ public class TaskDto {
     private String description;
     private Timestamp issuedDate;
     private TaskStatus status;
+
     private String userName;
 }
