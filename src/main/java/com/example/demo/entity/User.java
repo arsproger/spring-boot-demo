@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -31,12 +30,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "date_of_birth")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_birth")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfBirth;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks=new ArrayList<>();
 
 }

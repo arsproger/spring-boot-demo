@@ -1,1 +1,1 @@
-alter table users add column
+alter table users add column date_birth TIMESTAMP

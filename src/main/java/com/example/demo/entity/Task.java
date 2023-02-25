@@ -26,7 +26,7 @@ public class Task {
 
     private Timestamp issuedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     @Enumerated(EnumType.STRING)

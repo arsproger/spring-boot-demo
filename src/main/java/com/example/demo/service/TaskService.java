@@ -33,7 +33,7 @@ public class TaskService {
         taskDto.setDescription(task.getDescription());
         taskDto.setStatus(task.getStatus());
         taskDto.setIssuedDate(task.getIssuedDate());
-        taskDto.setUserName(user.getName());
+        taskDto.setUserEmail(user.getEmail());
         return taskDto;
     }
 
