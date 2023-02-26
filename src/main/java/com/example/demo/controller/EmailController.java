@@ -28,5 +28,4 @@ public class EmailController {
                     "classpath:purchase_order.pdf");
 
     }
-
 }
