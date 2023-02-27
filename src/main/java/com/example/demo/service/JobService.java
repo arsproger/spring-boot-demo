@@ -31,7 +31,7 @@ public class JobService {
         List<Task> tasks = taskService.getAllTasks();
         Timestamp time = new Timestamp(System.currentTimeMillis());
         for(Task task: tasks){
-            if(task.getIssuedDate().getDate() == (time.getDate())){
+            if(task.getIssuedDate().compareTo(time) > 0){
                 emailService.sendSimpleEmail(task.getUser().getEmail(),"Issued Date","Today is the day of your task.");
             }
         }
