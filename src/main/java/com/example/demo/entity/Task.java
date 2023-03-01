@@ -31,4 +31,9 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     TaskStatus status;
+
+    /*
+    Время удаления
+     */
+    private Timestamp rdt;
 }

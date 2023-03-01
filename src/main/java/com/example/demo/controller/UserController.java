@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.model.UserDto;
 import com.example.demo.model.UserSaveDto;
 import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
@@ -15,15 +16,14 @@ public class UserController {
    UserService service;
 
     @GetMapping("/user/{id}")
-    User getById(@PathVariable Long id) {
+    UserDto getById(@PathVariable Long id) {
        return service.getById(id);
     }
 
     @GetMapping("/user/all")
-    List<User> getAllPersons() {
+    List<UserDto> getAllPersons() {
         return service.getAllPersons();
     }
-
 
     @PostMapping("/user/save")
     Long saveNewPerson(@RequestBody UserSaveDto user) {

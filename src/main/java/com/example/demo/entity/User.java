@@ -32,6 +32,11 @@ public class User {
 
     private Timestamp birthDate;
 
+    /*
+     Время удаления
+     */
+    private Timestamp rdt;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks=new ArrayList<>();
 

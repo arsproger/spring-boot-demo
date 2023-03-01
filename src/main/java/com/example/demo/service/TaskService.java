@@ -6,6 +6,7 @@ import com.example.demo.enums.TaskStatus;
 import com.example.demo.model.TaskDto;
 import com.example.demo.model.TaskSaveDto;
 import com.example.demo.model.TaskUpdateStatusDto;
+import com.example.demo.model.UserDto;
 import com.example.demo.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class TaskService {
     }
 
     public TaskDto getByIdAndUserId(Long taskId, Long userId) {
-        User user = userService.getById(userId);
-        Task task = taskRepo.findByIdAndUserId(taskId, userId);
+        UserDto user = userService.getById(userId);
+        Task task = taskRepo.findByIdAndUserIdAndRdtIsNull(taskId, userId);
         TaskDto taskDto = new TaskDto();
         taskDto.setTitle(task.getTitle());
         taskDto.setDescription(task.getDescription());
@@ -43,7 +44,7 @@ public class TaskService {
 
     public Long saveTask(TaskSaveDto dto) {
 
-        User user = userService.getById(dto.getUserId());
+        User user = userService.findById(dto.getUserId());
         Task task = new Task();
 
         task.setTitle(dto.getTitle());
@@ -57,7 +58,7 @@ public class TaskService {
     }
 
     public TaskUpdateStatusDto updateStatusTask(Long taskId, Long userId) throws Exception {
-        Task task = taskRepo.findByIdAndUserId(taskId, userId);
+        Task task = taskRepo.findByIdAndUserIdAndRdtIsNull(taskId, userId);
 
         if (task == null || task.getStatus() == TaskStatus.DONE)
         throw new Exception("The status of your task is DONE");
@@ -78,8 +79,10 @@ public class TaskService {
         return model;
     }
 
-    public void deletePersonById(Long id) {
-        taskRepo.deleteById(id);
+    public void deleteUserById(Long id) {
+        Task task = getById(id);
+        task.setRdt(new Timestamp(System.currentTimeMillis()));
+        taskRepo.save(task);
     }
 
     public TaskDto mapToTaskSaveModel(Long id) {
@@ -99,7 +102,7 @@ public class TaskService {
 
     public List<TaskDto> getAllByUserId(Long userId) {
 
-        List<Task> tasks = taskRepo.findAllByUserId(userId);
+        List<Task> tasks = taskRepo.findAllByUserIdAndRdtIsNull(userId);
         List<TaskDto> taskDtos = new ArrayList<>();
 
         for (Task task : tasks) {

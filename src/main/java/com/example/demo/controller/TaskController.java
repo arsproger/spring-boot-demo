@@ -54,8 +54,8 @@ public class TaskController {
 
 
     @DeleteMapping("/delete/{id}")
-    void deletePersonById(@PathVariable Long id) {
-        service.deletePersonById(id);
+    void deleteUserById(@PathVariable Long id) {
+        service.deleteUserById(id);
     }
 
     @PutMapping("/update")
