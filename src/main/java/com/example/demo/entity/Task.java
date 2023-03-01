@@ -29,6 +29,9 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    /*
+    Енумка статусов
+    */
     @Enumerated(EnumType.STRING)
     TaskStatus status;
 
