@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
-import com.example.demo.model.UserSaveModel;
+import com.example.demo.model.UserDto;
+import com.example.demo.model.UserSaveDto;
 import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +16,17 @@ public class UserController {
    UserService service;
 
     @GetMapping("/user/{id}")
-    User getById(@PathVariable Long id) {
+    UserDto getById(@PathVariable Long id) {
        return service.getById(id);
     }
 
     @GetMapping("/user/all")
-    List<User> getAllPersons() {
+    List<UserDto> getAllPersons() {
         return service.getAllPersons();
     }
 
     @PostMapping("/user/save")
-    Long saveNewPerson(@RequestBody UserSaveModel user) {
+    Long saveNewPerson(@RequestBody UserSaveDto user) {
         return service.saveNewPerson(user);
     }
 
@@ -37,5 +38,9 @@ public class UserController {
     @PutMapping("/user/update")
     User updateSurnameById(@RequestBody User user) {
         return service.updateById(user);
+    }
+    @PutMapping("/user/updateUser")
+    UserSaveDto updateUser (@RequestBody User user) {
+        return service.updateUserById(user);
     }
 }

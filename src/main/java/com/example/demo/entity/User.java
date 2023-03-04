@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
-    //asdfasdfsf
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
@@ -29,6 +29,13 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    private Timestamp birthDate;
+
+    /*
+     Время удаления
+     */
+    private Timestamp rdt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks=new ArrayList<>();

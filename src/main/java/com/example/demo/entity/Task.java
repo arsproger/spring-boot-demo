@@ -26,9 +26,17 @@ public class Task {
 
     private Timestamp issuedDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    /*
+    Енумка статусов
+    */
     @Enumerated(EnumType.STRING)
     TaskStatus status;
+
+    /*
+    Время удаления
+     */
+    private Timestamp rdt;
 }

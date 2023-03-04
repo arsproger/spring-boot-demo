@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<CurrencyRates Name="Daily Exchange Rates" Date="04.03.2023">
+    <Currency ISOCode="USD">
+        <Nominal>1</Nominal>
+        <Value>87,4200</Value>
+    </Currency>
+    <Currency ISOCode="EUR">
+        <Nominal>1</Nominal>
+        <Value>92,8400</Value>
+    </Currency>
+    <Currency ISOCode="KZT">
+        <Nominal>1</Nominal>
+        <Value>0,2028</Value>
+    </Currency>
+    <Currency ISOCode="RUB">
+        <Nominal>1</Nominal>
+        <Value>1,1592</Value>
+    </Currency>
+</CurrencyRates>
