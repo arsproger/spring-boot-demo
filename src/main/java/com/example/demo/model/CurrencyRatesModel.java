@@ -25,7 +25,7 @@ public class CurrencyRatesModel {
 
     LocalDateTime createDate;
 
-    @JacksonXmlProperty(localName = "Name1", isAttribute = true)
+    @JacksonXmlProperty(localName = "Name", isAttribute = true)
     String name;
 
     @JacksonXmlProperty(localName = "Date", isAttribute = true)

@@ -31,10 +31,10 @@ public class CurrencyModel {
     Integer nominal;
 
     @JacksonXmlProperty(localName = "Value")
-    BigDecimal value;
+    Double value;
 
     public void setValue(String value) {
         value = value.replace(',', '.');
-        this.value = new BigDecimal(value);
+        this.value = Double.valueOf(value);
     }
 }
